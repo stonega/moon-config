@@ -4,4 +4,4 @@ Personal configuration files for gnome desktop environment.
 
 [Kitty](/kitty)
 
-[LazyVim](/lazyvim)
+[LazyVim](/nvim)
