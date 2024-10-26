@@ -1,0 +1,8 @@
+{
+    "diagnostics.globals": [
+        "autocmd"
+    ],
+    "diagnostics.disable": [
+        "param-type-mismatch"
+    ]
+}
