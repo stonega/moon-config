@@ -14,13 +14,6 @@ return {
       opts.formatters_by_ft.typescript = { "eslint_d" }
       opts.formatters_by_ft.vue = { "eslint_d" }
       opts.formatters_by_ft.svg = { "xmlformatter" }
-      vim.list_extend(opts.formatters, {
-        biome = {
-          condition = function(ctx)
-            return vim.fs.find({ "biome.json" }, { path = ctx.filename, upward = true })[1]
-          end,
-        },
-      })
     end,
     cofig = function()
       require("conform").setup({

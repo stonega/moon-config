@@ -4,13 +4,20 @@ return {
   lazy = false,
   opts = {
     -- add any opts here
-    claude = {
-      proxy = "http://127.0.0.1:7890",
+    provider = "openai",
+    auto_suggestions_provider = "copilot",
+    openai = {
+      endpoint = "https://aihubmix.com/v1",
+      model = "claude-3-5-sonnet-20241022",
+      temperature = 0,
+      max_tokens = 4096,
     },
-    windows = { position = "bottom" },
   },
-  build = ":AvanteBuild", -- This is optional, recommended tho. Also note that this will block the startup for a bit since we are compiling bindings in Rust.
+  -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
+  build = "make",
+  -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
   dependencies = {
+    "nvim-treesitter/nvim-treesitter",
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
@@ -35,7 +42,7 @@ return {
       },
     },
     {
-      -- Make sure to setup it properly if you have lazy=true
+      -- Make sure to set this up properly if you have lazy=true
       "MeanderingProgrammer/render-markdown.nvim",
       opts = {
         file_types = { "markdown", "Avante" },

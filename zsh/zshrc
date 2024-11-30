@@ -1,0 +1,30 @@
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+plugins=(git history zsh-autosuggestions kitty colorize extract)
+POWERLEVEL9K_LEGACY_ICON_SPACING=true
+
+source $ZSH/oh-my-zsh.sh
+
+alias vi="nvim"
+alias nivm="nvim"
+alias wlp="wl-paste"
+alias icat="kitten icat"
+alias dnfu="sudo dnf update --refresh -y"
+
+source <(fzf --zsh)
+function yy() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

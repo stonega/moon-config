@@ -8,7 +8,7 @@ return {
     },
   },
   {
-    "yorumicolors/yorumi.nvim",
+    "stonega/yorumi.nvim",
     lazy = false,
     priority = 1000,
   },
