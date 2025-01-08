@@ -6,6 +6,9 @@ return {
     -- add any opts here
     provider = "openai",
     auto_suggestions_provider = "copilot",
+    copilot = {
+      model = "claude-3-5-sonnet",
+    },
     openai = {
       endpoint = "https://aihubmix.com/v1",
       model = "claude-3-5-sonnet-20241022",
@@ -42,12 +45,23 @@ return {
       },
     },
     {
-      -- Make sure to set this up properly if you have lazy=true
-      "MeanderingProgrammer/render-markdown.nvim",
+      "OXY2DEV/markview.nvim",
+      enabled = true,
+      lazy = false,
+      ft = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
       opts = {
-        file_types = { "markdown", "Avante" },
+        filetypes = { "markdown", "norg", "rmd", "org", "vimwiki", "Avante" },
+        buf_ignore = {},
+        max_length = 99999,
       },
-      ft = { "markdown", "Avante" },
     },
+    -- {
+    --   -- Make sure to set this up properly if you have lazy=true
+    --   "MeanderingProgrammer/render-markdown.nvim",
+    --   opts = {
+    --     file_types = { "markdown", "Avante" },
+    --   },
+    --   ft = { "markdown", "Avante" },
+    -- },
   },
 }
