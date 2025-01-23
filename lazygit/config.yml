@@ -1,0 +1,9 @@
+gui:
+  nerdFontsVersion: "3"
+customCommands:
+  - key: <c-a>
+    description: AI commit
+    command: coas commit
+    context: files
+    subprocess: true
+    showOutput: true
