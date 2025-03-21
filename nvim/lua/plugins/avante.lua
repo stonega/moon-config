@@ -4,16 +4,40 @@ return {
   lazy = false,
   opts = {
     -- add any opts here
-    provider = "openai",
-    auto_suggestions_provider = "copilot",
-    copilot = {
-      model = "claude-3-5-sonnet",
-    },
+    provider = "gemini",
+    auto_suggestions_provider = "gemini",
     openai = {
       endpoint = "https://aihubmix.com/v1",
       model = "claude-3-5-sonnet-20241022",
       temperature = 0,
       max_tokens = 4096,
+    },
+    gemini = {
+      endpoint = "https://generativelanguage.googleapis.com/v1beta/models",
+      model = "gemini-2.0-pro-exp-02-05",
+      timeout = 30000, -- Timeout in milliseconds
+      temperature = 0,
+      max_tokens = 8192,
+    },
+    cursor_applying_provider = nil,
+    behaviour = {
+      auto_suggestions = false, -- Experimental stage
+      auto_set_highlight_group = true,
+      auto_set_keymaps = true,
+      auto_apply_diff_after_generation = false,
+      support_paste_from_clipboard = false,
+      minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+      enable_token_counting = true, -- Whether to enable token counting. Default to true.
+      enable_cursor_planning_mode = false, -- Whether to enable Cursor Planning Mode. Default to false.
+    },
+    vendors = {
+      groq = { -- define groq provider
+        __inherited_from = "openai",
+        api_key_name = "GROQ_API_KEY",
+        endpoint = "https://api.groq.com/openai/v1/",
+        model = "qwen-2.5-coder-32b",
+        max_tokens = 8192, -- remember to increase this value, otherwise it will stop generating halfway
+      },
     },
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`

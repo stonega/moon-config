@@ -3,3 +3,4 @@
 -- Add any additional options here
 
 vim.g.maplocalleader = ","
+vim.opt.laststatus = 3
